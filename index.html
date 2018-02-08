@@ -1,14 +1,72 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-us">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <title>Rock Paper Scissors Part 2
+  </title>
 </head>
+
 <body>
 
-    
+  <div id="game">
+    <div class="jumbotron">
+      <h1>Please enter (r)Rock, (p)Paper and (s)Sissor</h1>
+      <p>You chose:
+        <span id="user-text">nothing</span>
+      </p>
+      <p>Computer chose:
+        <span id="computer-text">nothing</span>
+      </p>
+      <p>Win:
+        <span id="win-text"></span>
+      </p>
+      <p>Lose:
+        <span id="lose-text"></span>
+      </p>
+      <p>Tie:
+        <span id="tie-text">
+      </p>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+
+    // Creates an array that lists out all of the options (Rock, Paper, or Scissors).
+    var computerChoices = ["r", "p", "s"];
+    var wincount = 0;
+    var losecount = 0;
+    var tiecount = 0;
+
+    // This function is run whenever the user presses a key.
+    document.onkeyup = function (event) {
+
+      // Determines which key was pressed.
+      var userGuess = event.key;
+      document.getElementById("user-text").textContent = userGuess;
+
+      // Randomly chooses a choice from the options array. This is the Computer's guess.
+      var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+      document.getElementById("computer-text").textContent = computerGuess;
+
+      // Alerts the key the user pressed (userGuess).
+      if (userGuess === "p" && computerGuess === "p" || userGuess === "r" && computerGuess === "r" || userGuess === "s" && computerGuess === "s") {
+        tiecount++;
+        document.getElementById("tie-text").textContent = tiecount;
+      } else if (userGuess === "p" && computerGuess === "r" || userGuess === "r" && computerGuess === "s" || userGuess === "s" && computerGuess === "p") {
+        wincount++;
+        document.getElementById("win-text").textContent = wincount;
+      } else if (userGuess === "r" && computerGuess === "p" || userGuess === "s" && computerGuess === "r" || userGuess === "p" && computerGuess === "s") {
+        losecount++;
+        document.getElementById("lose-text").textContent = losecount;
+      }
+
+      // Alerts the Computer's guess.
+
+
+    };
+  </script>
 
 </body>
+
 </html>
